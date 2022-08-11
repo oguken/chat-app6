@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   # root to:で、/localhost:3000/を入力した時に"rooms#index"に遷移されるようになる、root to:を消した場合railsの初期画面に遷移される。
   root to: "rooms#index"
   resources :users, only: [:edit, :update]
-  resources :rooms, only: [:new, :create]
+  resources :rooms, only: [:new, :create] do
+    resources :messages, only: [:index, :create]
+  end
 end
